@@ -34,10 +34,10 @@ public class Main {
 
 		// Creamos un flujo.
 		try (BufferedReader br = new BufferedReader(new FileReader("src\\ejercicio3\\Alumnos.txt"))) {
-			
+
 			// Guardamos la linea.
 			linea = br.readLine();
-			
+
 			// Creamos un bucle que recorrerá las lineas del fichero hasta que no haya más.
 			while (linea != null) {
 
@@ -45,8 +45,8 @@ public class Main {
 				data = linea.split(" ");
 
 				// Imprimimos la información.
-				System.out.println("Nombre: " + data[0] + " Edad: " + Integer.parseInt(data[1]) + " Estatura: "
-						+ Double.parseDouble(data[2]));
+				System.out.println("Nombre: " + data[0] + "| Edad: " + Integer.parseInt(data[1]) + " años"
+						+ "| Estatura: " + Double.parseDouble(data[2]) + " mtrs");
 
 				// Aumentamos la suma de edades.
 				sumaEdades += Integer.parseInt(data[1]);
@@ -56,15 +56,15 @@ public class Main {
 				contador++;
 
 				// Pasamos a la linea
-				br.readLine();
+				linea = br.readLine();
 			}
 			// Calculamos la media de la estatura y la edad.
 			mediaEstatura = sumaEstatura / contador;
 			mediaEdades = sumaEdades / contador;
 
 			// Imprimimos la media de las edades y estatura.
-			System.out.println("La media de las edades es la siguiente: " + mediaEdades);
-			System.out.println("La media de estaturas es la siguiente: " + mediaEstatura);
+			System.out.println("La media de las edades es la siguiente: " + mediaEdades + " años");
+			System.out.println("La media de estaturas es la siguiente: " + mediaEstatura + " mtrs");
 
 			// Cogemos la excepción.
 		} catch (FileNotFoundException e) {
