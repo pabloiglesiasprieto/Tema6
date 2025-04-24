@@ -1,18 +1,24 @@
 package ejercicio7;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 
+		// Creamos un HashMap.
+		HashMap<String, Integer> mapa = new HashMap<String, Integer>();
+
 		// Creamos una variable que almacenará el nombre.
 		String nombre;
 
 		// Creamos una variable que almacenará el telefono.
-		int telefono;
+		Integer telefono;
 
 		// Declaramos la variable que almacenará la elección del usuario.
 		char eleccion;
@@ -60,24 +66,28 @@ public class Main {
 					// Limpiamos Scanner.
 					sc.nextLine();
 
-					// Guardamos la info en una linea.
-					linea += "Nombre: " + nombre + " " + "Telefono: " + Integer.toString(telefono);
-
-					// Añadimos la linea al fichero.
-					bw.write(linea);
-
-					// Añadimos una nueva linea.
-					bw.newLine();
-
-					// Limpiamos el buffer.
-					bw.flush();
+					// Añadimos los datos al mapa.
+					mapa.put(nombre, telefono);
 				}
 				// Segundo case.
 				case 2 -> {
-					
-					// Creamos un flujo.
-					BufferedReader br = new 
 
+					// Creamos un flujo.
+					try (BufferedReader br = new BufferedReader(
+							new FileReader("src\\ejercicio8\\datosTelefonicos.txt"))) {
+
+						// Cogemos la excepción.
+					} catch (IOException ioe) {
+
+						// Lanzamos la excepción.
+						System.out.println("El archivo no existe: " + ioe.getMessage());
+
+						// Creamos el archivo.
+						FileWriter fw = new FileWriter("src\\ejercicio8\\datosTelefonicos.txt");
+
+						// Cerramos el File Writer.
+						fw.close();
+					}
 				}
 				// Tercer case.
 				case 3 -> {
@@ -91,7 +101,7 @@ public class Main {
 
 			// Imprimimos la excepción.
 			System.out.println("El fichero no se ha podido escribir: " + e.getMessage());
-
 		}
+	
 	}
 }
