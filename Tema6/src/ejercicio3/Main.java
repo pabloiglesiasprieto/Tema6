@@ -45,8 +45,8 @@ public class Main {
 				data = linea.split(" ");
 
 				// Imprimimos la información.
-				System.out.println("Nombre: " + data[0] + "| Edad: " + Integer.parseInt(data[1]) + " años"
-						+ "| Estatura: " + Double.parseDouble(data[2]) + " mtrs");
+				System.out.println(
+						"Nombre: " + data[0] + "| Edad: " + (data[1]) + " años" + "| Estatura: " + (data[2]) + " mtrs");
 
 				// Aumentamos la suma de edades.
 				sumaEdades += Integer.parseInt(data[1]);
